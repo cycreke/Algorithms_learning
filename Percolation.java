@@ -15,6 +15,7 @@ public class Percolation {
 	
 	public Percolation(int n){
 		//create n * n + 2 UF
+		if (n <= 0) throw new IllegalArgumentException("n index out of bound");
 		UF = new WeightedQuickUnionUF(n * n + 2);
 		// no bottom virtual point 
 		UF_TOP = new WeightedQuickUnionUF(n * n + 1);
@@ -28,9 +29,9 @@ public class Percolation {
 	}
 	
 	private void valid(int row, int col){
-		if (row <= 0 || row > row_i) throw new IndexOutOfBoundsException("row index out of bound");
+		if (row <= 0 || row > row_i) throw new IllegalArgumentException("row index out of bound");
 		
-		if (col <= 0 || col > col_j) throw new IndexOutOfBoundsException("col index out of bound");
+		if (col <= 0 || col > col_j) throw new IllegalArgumentException("col index out of bound");
 	}
 	
 	// open site (row, col) if it is not open already
